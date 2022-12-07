@@ -1,0 +1,70 @@
+<template>
+    <lightning-card>
+
+
+        <div class="demo-only " style="padding:0.5rem;background:#d4751b">
+            <div class="slds-text-color_inverse slds-text-align_center  slds-text-title_caps slds-text-title_bold">Tip Calculator</div>
+            </div>
+
+
+        <div class="slds-m-around_medium">
+
+<lightning-input
+ type="number" 
+
+ label="Bill Amount" 
+ placeholder="Amount to be paid"
+  formatter="currency"
+  class="slds-text-title_caps slds-text-title_bold form DOB"
+  onchange={onchangeBillHandle}></lightning-input> 
+    
+
+  <lightning-combobox
+  name="service"
+  label="How was the service?"
+  value={percent}
+  
+  options={options}
+  
+  class="slds-text-title_caps slds-text-title_bold slds-var-m-top_x-large"
+  onchange={onchangePercentHandle}></lightning-combobox>
+    
+    
+    <lightning-input
+     type="number"
+      label="Total number of persons"
+       placeholder="Number of people sharing the bill"
+        
+        class="DOB slds-text-title_caps slds-text-title_bold slds-var-m-top_x-large "
+        onchange={onchangeNumberPersonHandle}></lightning-input>
+
+<div style="display: flex; flex-direction: row; align-items:center; justify-content:center">
+
+        <button
+         class="slds-button slds-button_brand slds-text-title_caps slds-text-title_bold slds-var-m-top_x-large slds-text-color_inverse" style="height:30px;  width:120px;"
+         onclick={calculateHandle}>Calculate</button>
+
+         <button
+         class="slds-button slds-button_neutral slds-text-title_caps slds-text-title_bold slds-var-m-top_x-large slds-text-body_regular" style="height:20px; width:80px;"
+         onclick={clearHandle}
+        >Clear</button>
+</div>
+
+
+
+
+
+        </div>
+
+        <template if:true={isVisible}>
+        <div class="slds-box slds-m-around_medium">
+            <p class="slds-border_bottom slds-text-title_caps slds-text-title_bold slds-text-align_center slds-text-heading_large slds-m-around_small pad">Splitted Tip Per Person: ${splitTip} </p>
+
+            <!-- <p class="slds-text-title_caps slds-text-title_bold slds-text-align_center slds-text-heading_large slds-m-around_small">Total Tip: ${totalTip}</p> -->
+            </div>
+        </template>        
+    
+    </lightning-card>
+    
+    
+</template>
